@@ -56,9 +56,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">
+                                    @if(Auth::user()->isAdmin <> 0)
+                                    <a class="dropdown-item" href="{{ route('users.index') }}">
                                         User Management
                                     </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -78,6 +80,7 @@
 
         <main class="py-4">
             @yield('content')
+            @include('sweetalert::alert')
         </main>
     </div>
 </body>
